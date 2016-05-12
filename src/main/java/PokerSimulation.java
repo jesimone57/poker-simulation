@@ -37,22 +37,23 @@ public class PokerSimulation {
 		System.out.println("Number of cards left in deck:\n" + deck.cards.size());
 		System.out.println("\n");
 
+		int straightFlushCount = 0;
 		int flushCount = 0;
 		int straightCount = 0;
-		int straightFlushCount = 0;
 		int fourOfAKindCount = 0;
 		int threeOfAKindCount = 0;
 		int fullHouseCount = 0;
 		int twoPairCount = 0;
 		int onePairCount = 0;
 
-		System.out.println("Start simulating "+HANDS+" random poker hands:\n");
+		System.out.println("Start simulating "+HANDS+" random poker hands:");
 		for (int i = 0; i < HANDS; i++) {
 			deck = new Deck();
 			deck.shuffle();
 			hand = new Hand(deck.dealHand(5));
 
-			if (i>0 && i%100000 == 0) System.out.println("simulated "+i+" random poker hands ...");
+			if (i>100000 && i%100000 == 0) System.out.println("simulated "+i+" random poker hands ...");
+			if (i>0 && i<100000 && i%10000 == 0) System.out.println("simulated "+i+" random poker hands ...");
 
 			//  First we want to see if Aces can play low in straignts and straignt-flushes
 			if (hand.isStraightFlush()) {
@@ -102,7 +103,7 @@ public class PokerSimulation {
 				}
 			}
 		}
-		System.out.println("simulated "+HANDS+" random poker hands ...");
+		System.out.println("simulated "+HANDS+" random poker hands");
 		System.out.println("Done\n");
 
 		System.out.println("Probabilities:\n");
