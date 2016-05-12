@@ -2,11 +2,12 @@
 
 ### Description
 >The Java console application is a simulation of drawing N random 5-card hands from a standard 52 card deck.
-Each hand is then scored to see of we have a flush, straight, two-pair etc. hand.  Each type of hand is counted
-with the results displayed and both the actual probability and the expected (theoretical) probability.
+Each hand is then evaluated to see if we have a flush, straight, two-pair etc. hand.  Each type of hand is counted
+with the results displayed for both the actual probability and the expected (theoretical) probability of drawing that
+type of hand.
 
 ### To execute the code
-1. git clone the report to your local machine
+1. git clone the repo to your local machine
 2. cd out/production/poker-simulation
 3. java PokerSimulation
 
