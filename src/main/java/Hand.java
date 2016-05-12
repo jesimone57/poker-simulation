@@ -6,11 +6,24 @@ public class Hand {
 	
 	private List<Card> cards;
 	private int [] kinds = new int[14];
+
+	public List<Card> getCards() {
+		return this.cards;
+	}
 	
 	public Hand(List<Card> cards) {		
 		this.cards = cards;
 		order();
 		howManyOfAKind();
+	}
+
+	public boolean hasAces() {
+		for (int i=0; i<cards.size(); i++) {
+			if (cards.get(i).isAce()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean isFlush() {
@@ -21,7 +34,7 @@ public class Hand {
 		}
 		return true;
 	}
-	
+
 	public boolean isStraight() {
 		for (int i=0; i<cards.size()-1; i++) {
 			if (cards.get(i+1).rank() != cards.get(i).rank()+1) {
@@ -37,7 +50,7 @@ public class Hand {
 	
 	private void howManyOfAKind() {
 		for (Card card: cards) {
-			kinds[card.rank] = kinds[card.rank] + 1;
+			kinds[card.rank()] = kinds[card.rank()] + 1;
 		}
 	}
 	
@@ -92,7 +105,7 @@ public class Hand {
 		return pairCount == 1;
 	}
 	
-	private List<Card> order() {
+	public List<Card> order() {
 		Collections.sort(cards);
 		return cards;
 	}
