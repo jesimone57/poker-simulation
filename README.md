@@ -1,4 +1,4 @@
-# Poker Simulation to compute the various probalities of drawing 5-card hands
+# Poker Simulation to Compute the Various Probabilities of Drawing 5-card hands
 
 ### Description
 >The Java console application is a simulation of drawing N random 5-card hands from a standard 52 card deck.
