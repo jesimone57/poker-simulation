@@ -13,11 +13,11 @@ public class Card implements Comparable<Card> {
 
 	private static Map<Integer, String> faceMap = new HashMap();
 	static {
-		faceMap.put(1,  "A");  // Ace played as low
+		faceMap.put(1,  "A");  // Ace played as low.  example A-D 2-D 3-D 4-D 5-D
 		faceMap.put(11, "J");  // Jack
 		faceMap.put(12, "Q");  // Queen
 		faceMap.put(13, "K");  // King
-		faceMap.put(14, "A");  // Ace played as high
+		faceMap.put(14, "A");  // Ace played as high.  example 10-D J-D Q-D K-D A-D
 	}
 
 	public char suit() {

@@ -6,7 +6,7 @@ import java.util.List;
 public class Deck {
 
 	List<Card> cards = new ArrayList<Card>();
-	char[] suits = {'H', 'C', 'D', 'S'};
+	char[] suits = {'H', 'C', 'D', 'S'}; // hearts, clubs, diamonds, spades
 
 	public Deck() {
 		init();
