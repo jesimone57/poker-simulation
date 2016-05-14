@@ -11,7 +11,8 @@ public enum HandType {
 	FULL_HOUSE("Full House"),
 	THREE_OF_A_KIND("Three-of-a-Kind"),
 	TWO_PAIR("Two Pair"),
-	ONE_PAIR("One Pair");
+	ONE_PAIR("One Pair"),
+	NOTHING("Nothing");
 
 	private String label;
 	private HandType(String label) {

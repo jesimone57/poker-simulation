@@ -51,38 +51,30 @@ public class PokerSimulation {
 			deck = new Deck();
 			deck.shuffle();
 			hand = new Hand(deck.dealHand(5));  // deal a 5 card hand from the top of the deck
+			HandType handType = HandType.NOTHING;
 
 			if (i>100000 && i%100000 == 0) System.out.println("simulated "+i+" random poker hands ...");
 			if (i>0 && i<100000 && i%10000 == 0) System.out.println("simulated "+i+" random poker hands ...");
 
 			if (hand.isFourOfAKind()) {
-				//System.out.println("FOUR-OF-A-KIND  "+hand);
-				incrementHandTypeCount(HandType.FOUR_OF_A_KIND, handTypeCountMap);
+				handType = HandType.FOUR_OF_A_KIND;
 			} else if (hand.isFullHouse()) {
-				//System.out.println("FULL HOUSE      "+hand);
-				incrementHandTypeCount(HandType.FULL_HOUSE, handTypeCountMap);
+				handType = HandType.FULL_HOUSE;
 			} else if (hand.isThreeOfAKind()) {
-				//System.out.println("THREE-OF-A-KIND "+hand);
-				incrementHandTypeCount(HandType.THREE_OF_A_KIND, handTypeCountMap);
+				handType = HandType.THREE_OF_A_KIND;
 			} else if (hand.isTwoPair()) {
-				//System.out.println("TWO PAIR        "+hand);
-				incrementHandTypeCount(HandType.TWO_PAIR, handTypeCountMap);
+				handType = HandType.TWO_PAIR;
 			} else if (hand.isOnePair()) {
-				//System.out.println("ONE PAIR        "+hand);
-				incrementHandTypeCount(HandType.ONE_PAIR, handTypeCountMap);
-
+				handType = HandType.ONE_PAIR;
 			} else {
 
 				//  First we want to see if Aces can play low in straights and straight-flushes
 				if (hand.isStraightFlush()) {
-					//System.out.println("STRAIGHT-FLUSH  "+hand);
-					incrementHandTypeCount(HandType.STRAIGHT_FLUSH, handTypeCountMap);
+					handType = HandType.STRAIGHT_FLUSH;
 				} else if (hand.isFlush()) {
-					//System.out.println("FLUSH           "+hand);
-					incrementHandTypeCount(HandType.FLUSH, handTypeCountMap);
+					handType = HandType.FLUSH;
 				} else if (hand.isStraight()) {
-					//System.out.println("STRAIGHT        "+hand);
-					incrementHandTypeCount(HandType.STRAIGHT, handTypeCountMap);
+					handType = HandType.STRAIGHT;
 				}
 
 				//  Now we want to see if Aces can play high in straights and straight-flushes
@@ -96,14 +88,15 @@ public class PokerSimulation {
 					hand.order(); // reorder using the new rank of ace
 
 					if (hand.isStraightFlush()) {
-						//System.out.println("STRAIGHT-FLUSH  "+hand);
-						incrementHandTypeCount(HandType.STRAIGHT_FLUSH, handTypeCountMap);
+						handType = HandType.STRAIGHT_FLUSH;
 					} else if (hand.isStraight()) {
-						//System.out.println("STRAIGHT        "+hand);
-						incrementHandTypeCount(HandType.STRAIGHT, handTypeCountMap);
+						handType = HandType.STRAIGHT;
 					}
 				}
 			}
+
+			//System.out.println(handType+":   "+hand);
+			incrementHandTypeCount(handType, handTypeCountMap);
 		}
 
 		System.out.println("simulated "+HANDS+" random poker hands");
@@ -123,10 +116,12 @@ public class PokerSimulation {
 				handTypeCount = 0;
 			}
 			float actualProbability = ((float) handTypeCount) / (float) HANDS;
-			float expectedProbability = expectedProbabilities.get(handType);
-			float deviation = (actualProbability - expectedProbability)/expectedProbability;
-			System.out.println("\t"+handTypeLabel+"\t\t:   " + handTypeCount + " of  " + HANDS + ":  actual= " + 100 * actualProbability + "%    " +
-					"expected= " + 100 * expectedProbability+"%   deviation= "+ 100 * deviation+"%");
+			if (handType != HandType.NOTHING) {
+				float expectedProbability = expectedProbabilities.get(handType);
+				float deviation = (actualProbability - expectedProbability) / expectedProbability;
+				System.out.println("\t" + handTypeLabel + "\t\t:   " + handTypeCount + " of  " + HANDS + ":  actual= " + 100 * actualProbability + "%    " +
+						"expected= " + 100 * expectedProbability + "%   deviation= " + 100 * deviation + "%");
+			}
 		}
 	}
 
