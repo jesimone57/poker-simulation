@@ -109,6 +109,7 @@ public class PokerSimulation {
 
 	private static void printResultsToConsole(Map<HandType, Integer> handTypeCountMap) {
 		System.out.println("Probabilities:\n");
+		float totalActualProbabilities = 0F;
 		for (HandType handType:  HandType.values()) {
 			String handTypeLabel = handType.getLabel();
 			Integer handTypeCount = handTypeCountMap.get(handType);
@@ -116,13 +117,17 @@ public class PokerSimulation {
 				handTypeCount = 0;
 			}
 			float actualProbability = ((float) handTypeCount) / (float) HANDS;
+			totalActualProbabilities += actualProbability;
 			if (handType != HandType.NOTHING) {
 				float expectedProbability = expectedProbabilities.get(handType);
 				float deviation = (actualProbability - expectedProbability) / expectedProbability;
 				System.out.println("\t" + handTypeLabel + "\t\t:   " + handTypeCount + " of  " + HANDS + ":  actual= " + 100 * actualProbability + "%    " +
 						"expected= " + 100 * expectedProbability + "%   deviation= " + 100 * deviation + "%");
+			} else {
+				System.out.println("\t" + handTypeLabel + "\t\t:   " + handTypeCount + " of  " + HANDS + ":  actual= " + 100 * actualProbability + "%    ");
 			}
 		}
+		System.out.println("\nTotal of all actual proabilities= "+100 * totalActualProbabilities +"%");
 	}
 
 	private static void incrementHandTypeCount(HandType handType, Map<HandType, Integer> handTypeCountMap) {
