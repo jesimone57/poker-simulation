@@ -4,6 +4,12 @@ import java.util.Map;
 public class Card implements Comparable<Card> {
 
 	public Card(char suit, int rank) {
+		if ("HCSD".indexOf(suit) < 0) {
+			throw new IllegalArgumentException(String.format("Suit %c is not a valid suit: H, C, S or D", suit));
+		}
+		if (rank < 1 || rank > 14) {
+			throw new IllegalArgumentException(String.format("Rank %d is not a valid rank of 1 through 14 (Ace Played High: Above King)", rank));
+		}
 		this.suit = suit;
 		this.rank = rank;
 	}
@@ -11,7 +17,8 @@ public class Card implements Comparable<Card> {
 	private char suit;
 	private int rank;
 
-	private static Map<Integer, String> faceMap = new HashMap();
+	final private static Map<Integer, String> faceMap = new HashMap<Integer, String>();
+
 	static {
 		faceMap.put(1,  "A");  // Ace played as low.  example A-D 2-D 3-D 4-D 5-D
 		faceMap.put(11, "J");  // Jack

@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task run(type: JavaExec) {
+  main = 'PokerSimulation'
+  classpath = sourceSets.main.runtimeClasspath
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
