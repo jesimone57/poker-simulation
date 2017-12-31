@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Deck {
 
-	List<Card> cards = new ArrayList<Card>();
-	char[] suits = {'H', 'C', 'D', 'S'}; // hearts, clubs, diamonds, spades
+	private List<Card> cards = new ArrayList<Card>();
 
 	public Deck() {
 		init();
+	}
+
+	public List<Card> getCards() {
+		return cards;
 	}
 
 	public void shuffle() {
@@ -26,9 +29,7 @@ public class Deck {
 	}
 
 	private void init() {
-		for (int i = 0; i < suits.length; i++) {
-			char suit = suits[i];
-
+		for (SuitType suit : SuitType.values()) {
 			for (int rank = 1; rank < 14; rank++) {
 				Card card = new Card(suit, rank);
 				cards.add(card);
@@ -43,6 +44,22 @@ public class Deck {
 			sb.append(cards.get(i)).append(" ");
 		}
 		return sb.toString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (null == obj) return false;
+		if (!(obj instanceof Deck)) {
+			return false;
+		} else {
+			Deck other = (Deck) obj;
+			if (!this.cards.equals(other.cards)) {
+				return false;
+			} else {
+				return true;
+			}
+		}
 	}
 
 }

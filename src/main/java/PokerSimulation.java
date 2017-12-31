@@ -37,7 +37,7 @@ public class PokerSimulation {
 		System.out.println("What remains in deck:\n" + deck);
 		System.out.println("\n");
 
-		System.out.println("Number of cards left in deck:\n" + deck.cards.size());
+		System.out.println("Number of cards left in deck:\n" + deck.getCards().size());
 		System.out.println("\n");
 
 

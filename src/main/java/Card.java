@@ -3,18 +3,18 @@ import java.util.Map;
 
 public class Card implements Comparable<Card> {
 
-	public Card(char suit, int rank) {
-		if ("HCSD".indexOf(suit) < 0) {
-			throw new IllegalArgumentException(String.format("Suit %c is not a valid suit: H, C, S or D", suit));
+	public Card(SuitType suit, int rank) {
+		if (suit == null) {
+			throw new IllegalArgumentException("Suit is null");
 		}
-		if (rank < 1 || rank > 14) {
-			throw new IllegalArgumentException(String.format("Rank %d is not a valid rank of 1 through 14 (Ace Played High: Above King)", rank));
+		if (rank < 1 || rank > 13) {
+			throw new IllegalArgumentException(String.format("Rank %d is not a valid rank of 1 through 13", rank));
 		}
 		this.suit = suit;
 		this.rank = rank;
 	}
 
-	private char suit;
+	private SuitType suit;
 	private int rank;
 
 	final private static Map<Integer, String> faceMap = new HashMap<Integer, String>();
@@ -27,7 +27,7 @@ public class Card implements Comparable<Card> {
 		faceMap.put(14, "A");  // Ace played as high.  example 10-D J-D Q-D K-D A-D
 	}
 
-	public char suit() {
+	public SuitType suit() {
 		return suit;
 	}
 
@@ -63,6 +63,22 @@ public class Card implements Comparable<Card> {
 			face = faceMap.get(rank);
 		}
 		return face + "-" + suit;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (null == obj) return false;
+		if (! (obj instanceof Card)) {
+			return false;
+		} else {
+			Card other = (Card)obj;
+			if (other.suit != this.suit || other.rank != this.rank) {
+				return false;
+			} else {
+				return true;
+			}
+		}
 	}
 
 	@Override
