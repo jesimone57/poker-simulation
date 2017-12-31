@@ -9,10 +9,15 @@ type of hand.
 >You can change the number of poker hands simulated by changing the HANDS variable in the PokerSimulation.java class.
 The default is 100,000 hands simulated.
 
+### Prerequisites
+* java 1.8+
+* git
+* gradle
+
 ### To execute the code
-1. git clone the repo to your local machine
-2. cd out/production/poker-simulation
-3. java PokerSimulation
+1. git clone https://github.com/jesimone57/poker-simulation.git
+2. gradle clean build
+3. gradle run
 
 ### Sample Output
 
