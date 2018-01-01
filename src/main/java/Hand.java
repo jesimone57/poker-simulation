@@ -1,6 +1,8 @@
 import java.util.Collections;
 import java.util.List;
 
+import static java.util.stream.Collectors.joining;
+
 
 public class Hand {
 
@@ -18,21 +20,14 @@ public class Hand {
 	}
 
 	public boolean hasAces() {
-		for (int i = 0; i < cards.size(); i++) {
-			if (cards.get(i).isAce()) {
-				return true;
-			}
-		}
-		return false;
+		return cards.stream().anyMatch(card -> card.isAce());
 	}
 
+	/**
+	 * All cards have the same suit (as the first card)
+	 */
 	public boolean isFlush() {
-		for (int i = 1; i < cards.size(); i++) {
-			if (cards.get(0).suit() != cards.get(i).suit()) {
-				return false;
-			}
-		}
-		return true;
+		return cards.stream().allMatch(card -> card.suit() == cards.get(0).suit());
 	}
 
 	public boolean isStraight() {
@@ -54,55 +49,43 @@ public class Hand {
 		}
 	}
 
-	public boolean isFourOfAKind() {
+	private boolean isOfAKind(int n) {
 		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 4) {
+			if (kinds[i] == n) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private int pairCount() {
+		int pairCount = 0;
+		for (int i = 0; i < kinds.length; i++) {
+			if (kinds[i] == 2) {
+				pairCount++;
+			}
+		}
+		return pairCount;
+	}
+
+	public boolean isFourOfAKind() {
+		return isOfAKind(4);
 	}
 
 	public boolean isThreeOfAKind() {
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 3) {
-				return true;
-			}
-		}
-		return false;
+		return isOfAKind(3);
 	}
 
 	public boolean isFullHouse() {
-		boolean threeKindFound = false;
-		boolean pairFound = false;
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 3) {
-				threeKindFound = true;
-			} else if (kinds[i] == 2) {
-				pairFound = true;
-			}
-		}
-		return threeKindFound && pairFound;
+		return isOfAKind(3) && pairCount() == 1;
 	}
 
 	public boolean isTwoPair() {
-		int pairCount = 0;
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 2) {
-				pairCount++;
-			}
-		}
-		return pairCount == 2;
+		return pairCount() == 2;
 	}
 
 	public boolean isOnePair() {
-		int pairCount = 0;
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 2) {
-				pairCount++;
-			}
-		}
-		return pairCount == 1;
+		return pairCount() == 1;
 	}
 
 	public void order() {
@@ -111,11 +94,7 @@ public class Hand {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < cards.size(); i++) {
-			sb.append(cards.get(i)).append(" ");
-		}
-		return sb.toString();
+		return cards.stream().map(Card::toString).collect(joining(" "));
 	}
 
 }
