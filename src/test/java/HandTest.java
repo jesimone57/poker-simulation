@@ -16,7 +16,7 @@ public class HandTest {
 		cards.add(new Card(SuitType.D, 1));
 		Hand hand = new Hand(cards);
 		assertTrue(hand.isOnePair());
-		assertEquals("A-H A-D", hand.toString());
+		assertEquals("A-H A-D ", hand.toString());
 	}
 
 	@Test
