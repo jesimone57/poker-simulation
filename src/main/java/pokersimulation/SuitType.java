@@ -1,3 +1,5 @@
+package pokersimulation;
+
 public enum SuitType {
 	H,  // hearts
 	D,  // diamonds

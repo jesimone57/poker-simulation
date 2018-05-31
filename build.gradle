@@ -12,7 +12,7 @@ dependencies {
 }
 
 task run(type: JavaExec) {
-  main = 'PokerSimulation'
+  main = 'pokersimulation.PokerSimulation'
   classpath = sourceSets.main.runtimeClasspath
 }
 

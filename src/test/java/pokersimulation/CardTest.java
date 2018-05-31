@@ -1,4 +1,8 @@
+package pokersimulation;
+
 import org.junit.Test;
+import pokersimulation.Card;
+import pokersimulation.SuitType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

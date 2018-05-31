@@ -1,3 +1,5 @@
+package pokersimulation;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -5,7 +7,7 @@ import java.util.List;
 
 public class Deck {
 
-	private List<Card> cards = new ArrayList<Card>();
+	private List<Card> cards = new ArrayList<>();
 
 	public Deck() {
 		init();
@@ -20,7 +22,7 @@ public class Deck {
 	}
 
 	public List<Card> dealHand(int n) {
-		List<Card> hand = new ArrayList<Card>(n);
+		List<Card> hand = new ArrayList<>(n);
 		for (int i = 0; i < n; i++) {
 			hand.add(cards.get(0)); // top card
 			cards.remove(0); // top card

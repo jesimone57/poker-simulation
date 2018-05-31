@@ -1,3 +1,10 @@
+package pokersimulation;
+
+import pokersimulation.Card;
+import pokersimulation.Deck;
+import pokersimulation.Hand;
+import pokersimulation.HandType;
+
 import java.util.HashMap;
 import java.util.Map;
 

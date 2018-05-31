@@ -6,18 +6,18 @@ Each hand, drawn from the top of a shuffled deck, is evaluated to see if we have
 Each type of hand is counted
 with the results displayed for both the actual probability and the expected (theoretical) probability of drawing that
 type of hand.
->You can change the number of poker hands simulated by changing the HANDS variable in the PokerSimulation.java class.
+>You can change the number of poker hands simulated by changing the HANDS variable in the pokersimulation.PokerSimulation.java class.
 The default is 100,000 hands simulated.
 
 ### Prerequisites
 * java 1.8+
 * git
-* gradle
 
 ### To execute the code
 1. git clone https://github.com/jesimone57/poker-simulation.git
-2. gradle clean build
-3. gradle run
+2. cd poker-simulation
+2. gradlew clean build
+3. gradlew run
 
 ### Sample Output
 

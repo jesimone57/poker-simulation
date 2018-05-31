@@ -1,5 +1,10 @@
+package pokersimulation;
+
+import pokersimulation.Card;
+
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.joining;
 
@@ -44,18 +49,11 @@ public class Hand {
 	}
 
 	private void howManyOfAKind() {
-		for (Card card : cards) {
-			kinds[card.rank()] = kinds[card.rank()] + 1;
-		}
+	    cards.stream().forEach(card -> kinds[card.rank()] += 1);
 	}
 
-	private boolean isOfAKind(int n) {
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == n) {
-				return true;
-			}
-		}
-		return false;
+	private boolean isOfAKind(int nOfAKind) {
+        return IntStream.range(0, kinds.length).anyMatch(i -> kinds[i] == nOfAKind);
 	}
 
 	private int pairCount() {
