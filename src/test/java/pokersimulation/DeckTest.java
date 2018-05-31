@@ -53,7 +53,7 @@ public class DeckTest {
     @Test
     public void testEquals3() {
         Deck deck1 = new Deck();
-        assertNotNull(deck1);
+        assertNotEquals(deck1, null);
     }
 
     @Test
