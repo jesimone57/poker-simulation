@@ -16,7 +16,7 @@ The default is 100,000 hands simulated.
 ### To execute the code
 1. git clone https://github.com/jesimone57/poker-simulation.git
 2. cd poker-simulation
-2. gradlew clean build
+2. gradlew clean build test
 3. gradlew run
 
 ### Sample Output
