@@ -25,7 +25,7 @@ public class PokerSimulation {
 		expectedProbabilities.put(HandType.ONE_PAIR,     1098240F/numberOfPossibleFiveCardHands);
 	}
 
-	private static int HANDS = 100000;
+	private static final int HANDS = 100000;
 
 	public static void main(String[] args) {
 

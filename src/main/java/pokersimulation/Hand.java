@@ -11,88 +11,88 @@ import static java.util.stream.Collectors.joining;
 
 public class Hand {
 
-	private List<Card> cards;
-	private int[] kinds = new int[14];
+    private List<Card> cards;
+    private int[] kinds = new int[14];
 
-	public List<Card> getCards() {
-		return this.cards;
-	}
+    public List<Card> getCards() {
+        return this.cards;
+    }
 
-	public Hand(List<Card> cards) {
-		this.cards = cards;
-		order();
-		howManyOfAKind();
-	}
+    public Hand(List<Card> cards) {
+        this.cards = cards;
+        order();
+        howManyOfAKind();
+    }
 
-	public boolean hasAces() {
-		return cards.stream().anyMatch(card -> card.isAce());
-	}
+    public boolean hasAces() {
+        return cards.stream().anyMatch(Card::isAce);
+    }
 
-	/**
-	 * All cards have the same suit (as the first card)
-	 */
-	public boolean isFlush() {
-		return cards.stream().allMatch(card -> card.suit() == cards.get(0).suit());
-	}
+    /**
+     * All cards have the same suit (as the first card)
+     */
+    public boolean isFlush() {
+        return cards.stream().allMatch(card -> card.suit() == cards.get(0).suit());
+    }
 
-	public boolean isStraight() {
-		for (int i = 0; i < cards.size() - 1; i++) {
-			if (cards.get(i + 1).rank() != cards.get(i).rank() + 1) {
-				return false;
-			}
-		}
-		return true;
-	}
+    public boolean isStraight() {
+        for (int i = 0; i < cards.size() - 1; i++) {
+            if (cards.get(i + 1).rank() != cards.get(i).rank() + 1) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	public boolean isStraightFlush() {
-		return isStraight() && isFlush();
-	}
+    public boolean isStraightFlush() {
+        return isStraight() && isFlush();
+    }
 
-	private void howManyOfAKind() {
-	    cards.stream().forEach(card -> kinds[card.rank()] += 1);
-	}
+    private void howManyOfAKind() {
+        cards.stream().forEach(card -> kinds[card.rank()] += 1);
+    }
 
-	private boolean isOfAKind(int nOfAKind) {
+    private boolean isOfAKind(int nOfAKind) {
         return IntStream.range(0, kinds.length).anyMatch(i -> kinds[i] == nOfAKind);
-	}
+    }
 
-	private int pairCount() {
-		int pairCount = 0;
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 2) {
-				pairCount++;
-			}
-		}
-		return pairCount;
-	}
+    private int pairCount() {
+        int pairCount = 0;
+        for (int i = 0; i < kinds.length; i++) {
+            if (kinds[i] == 2) {
+                pairCount++;
+            }
+        }
+        return pairCount;
+    }
 
-	public boolean isFourOfAKind() {
-		return isOfAKind(4);
-	}
+    public boolean isFourOfAKind() {
+        return isOfAKind(4);
+    }
 
-	public boolean isThreeOfAKind() {
-		return isOfAKind(3);
-	}
+    public boolean isThreeOfAKind() {
+        return isOfAKind(3);
+    }
 
-	public boolean isFullHouse() {
-		return isOfAKind(3) && pairCount() == 1;
-	}
+    public boolean isFullHouse() {
+        return isOfAKind(3) && pairCount() == 1;
+    }
 
-	public boolean isTwoPair() {
-		return pairCount() == 2;
-	}
+    public boolean isTwoPair() {
+        return pairCount() == 2;
+    }
 
-	public boolean isOnePair() {
-		return pairCount() == 1;
-	}
+    public boolean isOnePair() {
+        return pairCount() == 1;
+    }
 
-	public void order() {
-		Collections.sort(cards);
-	}
+    public void order() {
+        Collections.sort(cards);
+    }
 
-	@Override
-	public String toString() {
-		return cards.stream().map(Card::toString).collect(joining(" "));
-	}
+    @Override
+    public String toString() {
+        return cards.stream().map(Card::toString).collect(joining(" "));
+    }
 
 }
