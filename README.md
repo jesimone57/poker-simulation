@@ -2,11 +2,11 @@
 
 ### Description
 >This Java console application is a simulation of drawing N random 5-card hands from a standard 52 card deck.
-<br/>
+
 Each hand, drawn from the top of a shuffled deck, is evaluated to determine what type of hand was drawn.
-<br/>
+
 Each type of hand is counted with the results displayed for both the actual probability and the expected (theoretical) probability of drawing that type of hand.
-<br/>
+
 >You can change the number of poker hands simulated by changing the HANDS variable in the pokersimulation.PokerSimulation.java class.
 The default is 100,000 hands simulated.
 
