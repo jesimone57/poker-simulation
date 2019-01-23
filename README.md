@@ -44,7 +44,7 @@ Probabilities:
   Flush             :    206 of  100000:  actual= 0.20600002%    expected=  0.19654015%    deviation=  4.813196%
   Four-of-a-Kind    :     31 of  100000:  actual= 0.031%         expected=  0.024009604%   deviation= 29.115004%
   Full House        :    159 of  100000:  actual= 0.159%         expected=  0.14405763%    deviation= 10.372497%
-  Three-of-a-Kind	:   2092 of  100000:  actual= 2.092%         expected=  2.1128452%     deviation= -0.986595%
+  Three-of-a-Kind   :   2092 of  100000:  actual= 2.092%         expected=  2.1128452%     deviation= -0.986595%
   Two Pair          :   4731 of  100000:  actual= 4.731%         expected=  4.7539015%     deviation= -0.481743%
   One Pair          :  42234 of  100000:  actual= 42.234%        expected= 42.256905%      deviation= -0.054199%
 </pre>
