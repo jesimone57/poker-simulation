@@ -39,7 +39,7 @@ The default is 100,000 hands simulated.
 Probabilities:
 
 <pre>
-  Straight Flush	:      2 of  100000:  actual= 0.0019999999%  expected=  0.0015390771%  deviation= 29.948%
+  Straight Flush    :      2 of  100000:  actual= 0.0019999999%  expected=  0.0015390771%  deviation= 29.948%
   Straight          :    392 of  100000:  actual= 0.39200002%    expected=  0.3924647%     deviation= -0.118401%
   Flush             :    206 of  100000:  actual= 0.20600002%    expected=  0.19654015%    deviation=  4.813196%
   Four-of-a-Kind	:     31 of  100000:  actual= 0.031%         expected=  0.024009604%   deviation= 29.115004%
