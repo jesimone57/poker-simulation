@@ -37,17 +37,20 @@ The default is 100,000 hands simulated.
     Done
 </pre>
 
+<pre>
 Probabilities:
 
-<pre>
-  Straight Flush    :      2 of  100000:  actual= 0.0019999999%  expected=  0.0015390771%  deviation= 29.948%
-  Straight          :    392 of  100000:  actual= 0.39200002%    expected=  0.3924647%     deviation= -0.118401%
-  Flush             :    206 of  100000:  actual= 0.20600002%    expected=  0.19654015%    deviation=  4.813196%
-  Four-of-a-Kind    :     31 of  100000:  actual= 0.031%         expected=  0.024009604%   deviation= 29.115004%
-  Full House        :    159 of  100000:  actual= 0.159%         expected=  0.14405763%    deviation= 10.372497%
-  Three-of-a-Kind   :   2092 of  100000:  actual= 2.092%         expected=  2.1128452%     deviation= -0.986595%
-  Two Pair          :   4731 of  100000:  actual= 4.731%         expected=  4.7539015%     deviation= -0.481743%
-  One Pair          :  42234 of  100000:  actual= 42.234%        expected= 42.256905%      deviation= -0.054199%
+        Straight Flush          :   2 of  100000:  actual= 0.0019999999%    expected= 0.0015390771%   deviation= 29.948%
+        Straight                :   411 of  100000:  actual= 0.411%    expected= 0.3924647%   deviation= 4.7228%
+        Flush           :   199 of  100000:  actual= 0.199%    expected= 0.19654015%   deviation= 1.2515793%
+        Four-of-a-Kind          :   17 of  100000:  actual= 0.016999999%    expected= 0.024009604%   deviation= -29.195%
+        Full House              :   137 of  100000:  actual= 0.137%    expected= 0.14405763%   deviation= -4.899173%
+        Three-of-a-Kind         :   2155 of  100000:  actual= 2.155%    expected= 2.1128452%   deviation= 1.9951688%
+        Two Pair                :   4670 of  100000:  actual= 4.67%    expected= 4.7539015%   deviation= -1.7648948%
+        One Pair                :   42469 of  100000:  actual= 42.469%    expected= 42.256905%   deviation= 0.50192314%
+        Nothing         :   49940 of  100000:  actual= 49.94%
+
+Total of all actual proabilities= 100.0%
 </pre>
 
 A full description is available here:  http://en.wikipedia.org/wiki/List_of_poker_hands
