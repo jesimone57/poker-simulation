@@ -1,5 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'jacoco'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -17,6 +19,7 @@ task run(type: JavaExec) {
 }
 
 test {
+    finalizedBy jacocoTestReport
     testLogging {
         events "passed", "skipped", "failed"
     }
