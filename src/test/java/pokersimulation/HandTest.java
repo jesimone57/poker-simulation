@@ -1,9 +1,6 @@
 package pokersimulation;
 
 import org.junit.Test;
-import pokersimulation.Card;
-import pokersimulation.Hand;
-import pokersimulation.SuitType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +132,20 @@ public class HandTest {
         assertTrue(hand.isTwoPair());
     }
 
+    @Test
+    public void testFullHouse4() {
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card(SuitType.C, 3));
+        cards.add(new Card(SuitType.H, 3));
+        cards.add(new Card(SuitType.D, 3));
+        cards.add(new Card(SuitType.S, 1));
+        cards.add(new Card(SuitType.S, 2));
+        Hand hand = new Hand(cards);
+        assertFalse(hand.isFullHouse());
+        assertTrue(hand.isThreeOfAKind());
+        assertFalse(hand.isOnePair());
+        assertFalse(hand.isTwoPair());
+    }
     @Test
     public void testFourOfAKind1() {
         List<Card> cards = new ArrayList<>();
