@@ -17,9 +17,11 @@ public enum HandType {
 	NOTHING("Nothing");
 
 	private String label;
+
 	HandType(String label) {
 		this.label = label;
 	}
+
 	public String getLabel() {
 		return this.label;
 	}

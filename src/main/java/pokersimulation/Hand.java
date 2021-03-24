@@ -47,7 +47,7 @@ public class Hand {
 	}
 
 	private void howManyOfAKind() {
-		cards.stream().forEach(card -> kinds[card.rank()] += 1);
+		cards.forEach(card -> kinds[card.rank()] += 1);
 	}
 
 	private boolean isOfAKind(int nOfAKind) {
@@ -56,8 +56,8 @@ public class Hand {
 
 	private int pairCount() {
 		int pairCount = 0;
-		for (int i = 0; i < kinds.length; i++) {
-			if (kinds[i] == 2) {
+		for (int kind : kinds) {
+			if (kind == 2) {
 				pairCount++;
 			}
 		}
